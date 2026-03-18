@@ -60,7 +60,7 @@ public class App {
 
             if(manterResultado.equalsIgnoreCase("S")){
                 System.out.println("\nVocê escolheu manter o resultado anterior. O resultado da última operação será usado como o primeiro número para a próxima operação.");
-                System.out.println("Informe qual será sua operação deseja: \n1 para Soma \n2 para Subtração \n3 para Multiplicação \n4 para Divisão\n");
+                System.out.println("Informe qual será sua operação desejada: \n\n1 para Soma \n2 para Subtração \n3 para Multiplicação \n4 para Divisão\n");
                 int novaOperacao = leia.nextInt();
                 
                 if(novaOperacao == 1) {
@@ -80,10 +80,10 @@ public class App {
                 if (novaOperacao == 4) {
                     System.out.println("(OBS: Você escolheu a operação de Divisão, lembre-se de que o segundo número não pode ser zero.)");    
                 }
-                
+
                 double novoNum2 = leia.nextDouble();
 
-                System.out.println("\nVocê digitou os números: " + resultado + " e " + novoNum2);
+                System.out.println("\nSeus números são: " + resultado + " e " + novoNum2);
 
                 if (novaOperacao == 1) {
                     resultado = resultado + novoNum2;
