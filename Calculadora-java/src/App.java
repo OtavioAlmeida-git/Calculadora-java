@@ -4,6 +4,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner leia = new Scanner(System.in);
 
+
         System.out.println("Olá, voce está em uma calculadora, escolha a operação que deseja realizar: \n\ndigite: \n1 para Soma \n2 para Subtração \n3 para Multiplicação \n4 para Divisão\n");
         int operacao = leia.nextInt();
         
@@ -54,23 +55,32 @@ public class App {
         System.out.println("\nDeseja realizar outra operação? (S/N)");
         String resposta = leia.next();
 
-        if(resposta.equalsIgnoreCase("S")){
-            System.out.println("Deseja manter o resultado anterior para a próxima operação? (S/N)");
-            String manterResultado = leia.next();
+        while(resposta.equalsIgnoreCase("S")){
+
+            if(resultado == 0){
+            System.out.println("Digite o primeiro número:");
+            resultado = leia.nextDouble();
+            }
+
+            if (resultado != 0) {
+                System.out.println("Deseja manter o resultado anterior para a próxima operação? (S/N)");
+                String manterResultado = leia.next();
+            }
+            String manterResultado = "S";
 
             if(manterResultado.equalsIgnoreCase("S")){
-                System.out.println("\nVocê escolheu manter o resultado anterior. O resultado da última operação será usado como o primeiro número para a próxima operação.");
+                System.out.println("\nVocê escolheu manter o resultado anterior: " + resultado + ". O resultado da última operação será usado como o primeiro número para a próxima operação.");
                 System.out.println("Informe qual será sua operação desejada: \n\n1 para Soma \n2 para Subtração \n3 para Multiplicação \n4 para Divisão\n");
                 int novaOperacao = leia.nextInt();
                 
                 if(novaOperacao == 1) {
-                    System.out.println("Você escolheu a operação de Soma.");   
+                    System.out.println("Você escolheu a operação de Soma. Seu primeiro numero é: " + resultado);   
                 } else if (novaOperacao == 2) {
-                    System.out.println("Você escolheu a operação de Subtração.");
+                    System.out.println("Você escolheu a operação de Subtração. Seu primeiro numero é: " + resultado);
                 } else if (novaOperacao == 3) {
-                    System.out.println("Você escolheu a operação de Multiplicação.");
+                    System.out.println("Você escolheu a operação de Multiplicação. Seu primeiro numero é: " + resultado);
                 } else if (novaOperacao == 4) {
-                    System.out.println("Você escolheu a operação de Divisão.");
+                    System.out.println("Você escolheu a operação de Divisão. Seu primeiro numero é: " + resultado);
                 } else {
                     System.out.println("Operação inválida. Por favor, escolha uma operação entre 1 e 4.");
                     return; // Encerra o programa se a operação for inválida
@@ -104,11 +114,20 @@ public class App {
                 }
 
             }else {
-                System.out.println("Você escolheu não manter o resultado anterior. A próxima operação começará do zero.");
-                return; // Encerra o programa para iniciar uma nova operação do zero
+                System.out.println("Você escolheu não manter o resultado anterior. A próxima operação começará do zero."); 
+
+                resultado = 0; 
+            continue;
+
             }
-        } else {
-            System.out.println("Encerrando a calculadora. Obrigado por usar!");
+
+            System.out.println("\nDeseja realizar outra operação? (S/N)");
+            resposta = leia.next();
         }
-        leia.close();}  
-}
+            System.out.println("Encerrando a calculadora. Obrigado por usar!");
+        
+            leia.close();
+        }
+    }  
+
+
