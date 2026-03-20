@@ -52,29 +52,29 @@ public class App {
             }
         } 
 
+        //Aqui encerra a calculadora simples e começa a tentativa de loop de repetição, para caso o usuário queira continuar fazendo contas
+
         System.out.println("\nDeseja realizar outra operação? (S/N)");
         String resposta = leia.next();
 
         while(resposta.equalsIgnoreCase("S")){
 
-            if(resultado == 0){
-            System.out.println("Digite o primeiro número:");
-            resultado = leia.nextDouble();
-            }
-
-            if (resultado != 0) {
                 System.out.println("Deseja manter o resultado anterior para a próxima operação? (S/N)");
                 String manterResultado = leia.next();
-            }
-            String manterResultado = "S";
 
-            if(manterResultado.equalsIgnoreCase("S")){
+                if(manterResultado.equalsIgnoreCase("S")){
+                }else {
+                    System.out.println("Você escolheu não manter o resultado anterior. A próxima operação começará do zero."); 
+                    main(args);
+                    return;
+                }
+
                 System.out.println("\nVocê escolheu manter o resultado anterior: " + resultado + ". O resultado da última operação será usado como o primeiro número para a próxima operação.");
                 System.out.println("Informe qual será sua operação desejada: \n\n1 para Soma \n2 para Subtração \n3 para Multiplicação \n4 para Divisão\n");
                 int novaOperacao = leia.nextInt();
                 
                 if(novaOperacao == 1) {
-                    System.out.println("Você escolheu a operação de Soma. Seu primeiro numero é: " + resultado);   
+                    System.out.println("Você escolheu a operação de Soma. Seu primeiro numero é: " + resultado);
                 } else if (novaOperacao == 2) {
                     System.out.println("Você escolheu a operação de Subtração. Seu primeiro numero é: " + resultado);
                 } else if (novaOperacao == 3) {
@@ -113,21 +113,21 @@ public class App {
                     }
                 }
 
-            }else {
-                System.out.println("Você escolheu não manter o resultado anterior. A próxima operação começará do zero."); 
-
-                resultado = 0; 
-            continue;
+                System.out.println("\nDeseja realizar outra operação? (S/N)");
+                resposta = leia.next();
 
             }
 
-            System.out.println("\nDeseja realizar outra operação? (S/N)");
-            resposta = leia.next();
+             if(resposta.equalsIgnoreCase("N")){
+                    System.out.println("Obrigado por usar a calculadora! Até a próxima.");
+                    
+       
+            }
         }
-            System.out.println("Encerrando a calculadora. Obrigado por usar!");
-        
-            leia.close();
-        }
-    }  
+    }           
+
+            
+           
+    
 
 
